@@ -1,5 +1,3 @@
-Lunch.html
-
 <!DOCTYPE html>
 <html>
 
@@ -23,10 +21,10 @@ Lunch.html
 
     <form>
         <label for="property_name">Enter property:</label>
-        <input type="text" id="propname" value="entree"><br>
+        <input type="text" id="propname" value="entree"><br><br>
 
         <label for="property_value">Set it to:</label>
-        <input type="text" id="propvalue"><br>
+        <input type="text" id="propvalue"><br><br>
 
         <input type="button" onclick="updateLunch()" value="Update the lunch">
     </form>
@@ -58,29 +56,7 @@ Lunch.html
             document.getElementById("updatedresult").innerHTML = `Updated Lunch Order: <br>` +
                 JSON.stringify(my_lunch, null, 2).replace(/\n/g, '<br>');
         }
-        function processRadio() {
-            let first = parseFloat(document.getElementById("firstno").value);
-            let second = parseFloat(document.getElementById("secondno").value);
-            let operation = document.querySelector('input[name="operation"]:checked').value;
-            let result;
-
-            switch (operation) {
-                case "max":
-                    result = Math.max(first, second);
-                    break;
-                case "min":
-                    result = Math.min(first, second);
-                    break;
-                case "avg":
-                    result = (first + second) / 2;
-                    break;
-                case "geo":
-                    result = Math.sqrt(first * second); 
-                    break;
-            }
-
-            document.getElementById("radio_result").innerHTML = `Computed ${operation} with values ${first} and ${second} with result ${result}`;
-        }
+        
     </script>
 
 </body>
