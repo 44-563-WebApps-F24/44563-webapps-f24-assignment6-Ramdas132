@@ -40,29 +40,7 @@ Math.html
             document.getElementById("result").innerHTML = `Sum of ${first} powers with base ${second} is ${sum}`;
         }
 
-        function processRadio() {
-            let first = parseFloat(document.getElementById("firstno").value);
-            let second = parseFloat(document.getElementById("secondno").value);
-            let operation = document.querySelector('input[name="operation"]:checked').value;
-            let result;
-
-            switch (operation) {
-                case "max":
-                    result = Math.max(first, second);
-                    break;
-                case "min":
-                    result = Math.min(first, second);
-                    break;
-                case "avg":
-                    result = (first + second) / 2;
-                    break;
-                case "geo":
-                    result = Math.sqrt(first * second); 
-                    break;
-            }
-
-            document.getElementById("radio_result").innerHTML = `Computed ${operation} with values ${first} and ${second} with result ${result}`;
-        }
+        
 
 
 

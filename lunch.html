@@ -4,24 +4,34 @@ Lunch.html
 <html>
 
 <head>
-    <title>Lunch page</title>
+    <title>order Lunch</title>
 </head>
 
 <body>
 
-    <h2>Kousik Kuchipudi orders a lunch</h2>
+    <h2>Durga Ramdas Raja orders a lunch</h2>
 
     <form>
         <label><input type="checkbox" id="drink" value="drink"> Drink</label><br>
         <label><input type="checkbox" id="side" value="side"> Side</label><br>
-        <label><input type="checkbox" id="in" value="in"> Eat in</label><br>
+        <label><input type="checkbox" id="in" value="in"> Eat in</label><br><br>
 
         <input type="button" onclick="startLunch()" value="Start a lunch order">
     </form>
 
-    <p id="lunch_result">Your lunch details will be displayed here</p>
+    <p id="result">Your lunch details will be displayed here</p>
 
-   
+    <form>
+        <label for="property_name">Enter property:</label>
+        <input type="text" id="propname" value="entree"><br>
+
+        <label for="property_value">Set it to:</label>
+        <input type="text" id="propvalue"><br>
+
+        <input type="button" onclick="updateLunch()" value="Update the lunch">
+    </form>
+
+    <p id="updatedresult">Your updated lunch details will be displayed here</p>
 
     <script>
         let my_lunch = {};
@@ -33,20 +43,43 @@ Lunch.html
             my_lunch.side = document.getElementById("side").checked;
             my_lunch.in = document.getElementById("in").checked;
 
-            document.getElementById("lunch_result").innerHTML = `Lunch Order: <br>
+            document.getElementById("result").innerHTML = `Lunch Order: <br>
                 Drink: ${my_lunch.drink ? "Yes" : "No"}<br>
                 Side: ${my_lunch.side ? "Yes" : "No"}<br>
                 Eat in: ${my_lunch.in ? "Yes" : "No"}`;
         }
 
         function updateLunch() {
-            const property = document.getElementById("property_name").value;
-            const value = document.getElementById("property_value").value;
+            const property = document.getElementById("propname").value;
+            const value = document.getElementById("propvalue").value;
 
             my_lunch[property] = value;
 
-            document.getElementById("updated_lunch_result").innerHTML = Updated Lunch Order: <br> +
+            document.getElementById("updatedresult").innerHTML = `Updated Lunch Order: <br>` +
                 JSON.stringify(my_lunch, null, 2).replace(/\n/g, '<br>');
+        }
+        function processRadio() {
+            let first = parseFloat(document.getElementById("firstno").value);
+            let second = parseFloat(document.getElementById("secondno").value);
+            let operation = document.querySelector('input[name="operation"]:checked').value;
+            let result;
+
+            switch (operation) {
+                case "max":
+                    result = Math.max(first, second);
+                    break;
+                case "min":
+                    result = Math.min(first, second);
+                    break;
+                case "avg":
+                    result = (first + second) / 2;
+                    break;
+                case "geo":
+                    result = Math.sqrt(first * second); 
+                    break;
+            }
+
+            document.getElementById("radio_result").innerHTML = `Computed ${operation} with values ${first} and ${second} with result ${result}`;
         }
     </script>
 
